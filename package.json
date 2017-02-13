@@ -1,0 +1,48 @@
+{
+  "name": "dumdum-js",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "files": [
+    "lib/",
+    "LICENSE"
+  ],
+  "scripts": {
+    "lint": "standard",
+    "test-spec": "mocha lib/**/*.spec.js -R spec --bail",
+    "test-cov": "istanbul cover -x *.spec.js node_modules/mocha/bin/_mocha -- lib/**/*.spec.js -R spec --bail",
+    "test": "npm run lint && npm run test-cov",
+    "build": "babel lib/index.js -d dist/dumdum.js",
+    "dev": "babel lib/index.js --watch --out-file dist/dumdum.js"
+  },
+  "standard": {
+    "ignore": [
+      "coverage/**",
+      "node_modules/**",
+      "bower_components/**"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tormjens/dumdum-js.git"
+  },
+  "keywords": [],
+  "author": "Tor Morten Jensen <tormorten@tormorten.no>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tormjens/dumdum-js/issues"
+  },
+  "homepage": "https://github.com/tormjens/dumdum-js",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
+    "chai": "^3.2.0",
+    "istanbul": "^0.3.5",
+    "mocha": "^2.1.0",
+    "pre-commit": "^1.1.1",
+    "standard": "^5.0.0"
+  },
+  "dependencies": {
+    "babel-plugin-transform-es2015-modules-umd": "^6.18.0"
+  }
+}

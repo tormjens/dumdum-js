@@ -1,0 +1,46 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body class="home">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <p>Hello world! This is HTML5 Boilerplate.</p>
+
+        <button id="clickit">Click for magic</button>
+
+        <script src="../dist/dumdum.js"></script>
+        <script>
+          var dumdum = new DumDum({
+            common: function() {
+              console.log('hei common')
+            },
+            home: function() {
+              console.log('hei home')
+            },
+            home_4: function() {
+              console.log('hei gay')
+            }
+          })
+
+          var button = document.querySelector('#clickit');
+
+          var i = 0;
+          button.addEventListener('click', function() {
+            document.body.classList = 'home-'+ i;
+            i++;
+            if(i > 4) {
+              i = 0;
+            }
+          })
+        </script>
+    </body>
+</html>

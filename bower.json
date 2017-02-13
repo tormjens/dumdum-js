@@ -1,0 +1,19 @@
+{
+  "name": "dumdum-js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/tormjens/dumdum-js",
+  "authors": [
+    "Tor Morten Jensen <tormorten@tormorten.no>"
+  ],
+  "description": "",
+  "main": "lib/index.js",
+  "keywords": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
