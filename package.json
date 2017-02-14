@@ -2,7 +2,7 @@
   "name": "dumdum-js",
   "version": "0.0.1",
   "description": "",
-  "main": "lib/index.js",
+  "main": "lib/DumDum.js",
   "files": [
     "lib/",
     "LICENSE"
@@ -12,8 +12,8 @@
     "test-spec": "mocha lib/**/*.spec.js -R spec --bail",
     "test-cov": "istanbul cover -x *.spec.js node_modules/mocha/bin/_mocha -- lib/**/*.spec.js -R spec --bail",
     "test": "npm run lint && npm run test-cov",
-    "build": "babel lib/index.js -d dist/dumdum.js",
-    "dev": "babel lib/index.js --watch --out-file dist/dumdum.js"
+    "build": "babel lib/DumDum.js -d dist/dumdum.js",
+    "dev": "babel lib/DumDum.js --watch --out-file dist/dumdum.js"
   },
   "standard": {
     "ignore": [
@@ -35,6 +35,7 @@
   "homepage": "https://github.com/tormjens/dumdum-js",
   "devDependencies": {
     "babel-cli": "^6.18.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.23.0",
     "babel-preset-latest": "^6.16.0",
     "chai": "^3.2.0",
     "istanbul": "^0.3.5",
@@ -42,7 +43,5 @@
     "pre-commit": "^1.1.1",
     "standard": "^5.0.0"
   },
-  "dependencies": {
-    "babel-plugin-transform-es2015-modules-umd": "^6.18.0"
-  }
+  "dependencies": {}
 }

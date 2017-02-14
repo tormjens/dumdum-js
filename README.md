@@ -42,6 +42,10 @@ new DumDum({
 })
 ```
 
+This will enable DumDum to watch for changes to your `body` element.
+
+If you need to watch for changes you can pass it as the second argument.
+
 ## License
 
 MIT license

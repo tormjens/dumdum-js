@@ -8,26 +8,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body class="home">
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
 
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+        <button id="clickit">Update body class</button>
 
-        <button id="clickit">Click for magic</button>
+        <div id="text">This text will update based on the classes on the body-tag.</div>
+
+        <button id="clickit2">Update html class</button>
+
+        <div id="text2">This text will update based on the classes on the html-tag.</div>
 
         <script src="../dist/dumdum.js"></script>
         <script>
+
+          // BODY
+          var text = document.querySelector('#text');
           var dumdum = new DumDum({
             common: function() {
-              console.log('hei common')
+              text.innerHTML += '<br>The <code>common</code> route was executed.';
             },
             home: function() {
-              console.log('hei home')
+              text.innerHTML += '<br>The <code>home</code> route was executed.';
             },
             home_4: function() {
-              console.log('hei gay')
+              text.innerHTML += '<br>The <code>home-4</code> route was executed.';
+            },
+            home_8: function() {
+              text.innerHTML += '<br>The <code>home-8</code> route was executed.';
             }
           })
 
@@ -37,8 +43,38 @@
           button.addEventListener('click', function() {
             document.body.classList = 'home-'+ i;
             i++;
-            if(i > 4) {
+            if(i > 8) {
               i = 0;
+            }
+          })
+
+          // HTML
+          var text2 = document.querySelector('#text2');
+          var element = document.querySelector('html');
+          var dumdum2 = new DumDum({
+            common: function() {
+              text2.innerHTML += '<br>The <code>common</code> route was executed.';
+            },
+            home: function() {
+              text2.innerHTML += '<br>The <code>home</code> route was executed.';
+            },
+            home_4: function() {
+              text2.innerHTML += '<br>The <code>home-4</code> route was executed.';
+            },
+            home_8: function() {
+              text2.innerHTML += '<br>The <code>home-8</code> route was executed.';
+            }
+          }, element)
+
+          var button2 = document.querySelector('#clickit2');
+
+          var x = 0;
+          button2.addEventListener('click', function() {
+            console.log(dumdum2.getExecutedRoutes());
+            element.classList = 'home-'+ x;
+            x++;
+            if(x > 8) {
+              x = 0;
             }
           })
         </script>
