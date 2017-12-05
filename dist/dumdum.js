@@ -56,7 +56,7 @@
 
     /**
      * Gets executed routes
-     * @return {Array}
+     * @return {Array} An array of all routes that was executed
      */
 
 

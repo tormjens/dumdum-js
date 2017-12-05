@@ -8,11 +8,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "lint": "standard",
-    "test-spec": "mocha lib/**/*.spec.js -R spec --bail",
-    "test-cov": "istanbul cover -x *.spec.js node_modules/mocha/bin/_mocha -- lib/**/*.spec.js -R spec --bail",
-    "test": "npm run lint && npm run test-cov",
-    "build": "babel lib/DumDum.js -d dist/dumdum.js",
+    "build": "babel lib/DumDum.js --out-file dist/dumdum.js",
     "dev": "babel lib/DumDum.js --watch --out-file dist/dumdum.js"
   },
   "standard": {
