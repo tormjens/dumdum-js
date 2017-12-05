@@ -1,6 +1,6 @@
 # Dumdum Js
 
-DumDum is a condtional JavaScript executor, or a router if you will. Routes are executed based on class names on the body element. DumDum has no dependencies. Is nice!
+DumDum is a condtional JavaScript executor, or a router if you will. Routes are executed based on class names on the body element. DumDum has no package dependencies, but relies on MutationObservers. Although it provides a light replacement for cases where MutationObservers are not availiable.
 
 [![NPM version][npm-image]][npm-url]
 [![NPM downloads][downloads-image]][downloads-url]
@@ -44,7 +44,13 @@ new DumDum({
 
 This will enable DumDum to watch for changes to your `body` element.
 
-If you need to watch for changes you can pass it as the second argument.
+If you need to watch for changes on different element you can pass it as the second argument:
+
+```js
+new DumDum({
+  ...
+}, document.querySelector('#awesome-div'))
+```
 
 ## License
 

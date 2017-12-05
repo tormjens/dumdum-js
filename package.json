@@ -1,6 +1,6 @@
 {
   "name": "dumdum-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "lib/DumDum.js",
   "files": [
@@ -8,8 +8,9 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "babel lib/DumDum.js --out-file dist/dumdum.js",
-    "dev": "babel lib/DumDum.js --watch --out-file dist/dumdum.js"
+    "test": "mocha-webpack --webpack-config webpack.config.js --require test/setup.js test/*.spec.js",
+    "watch": "mocha-webpack --webpack-config webpack.config.js --watch --require test/setup.js test/*.spec.js",
+    "build": "babel lib/DumDum.js --out-file dist/dumdum.js"
   },
   "standard": {
     "ignore": [
@@ -30,14 +31,18 @@
   },
   "homepage": "https://github.com/tormjens/dumdum-js",
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-plugin-transform-es2015-modules-umd": "^6.23.0",
-    "babel-preset-latest": "^6.16.0",
-    "chai": "^3.2.0",
-    "istanbul": "^0.3.5",
-    "mocha": "^2.1.0",
-    "pre-commit": "^1.1.1",
-    "standard": "^5.0.0"
+    "MutationObservers": "github:Polymer/MutationObservers",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "expect": "^21.2.1",
+    "jsdom": "^11.3.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^4.0.1",
+    "mocha-jsdom": "^1.1.0",
+    "mocha-webpack": "^0.7.0",
+    "mutationobserver-shim": "^0.3.2",
+    "webpack": "^3.7.1"
   },
   "dependencies": {}
 }

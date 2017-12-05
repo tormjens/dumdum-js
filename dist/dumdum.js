@@ -1,17 +1,25 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['module'], factory);
+    define(["module", "./Observer"], factory);
   } else if (typeof exports !== "undefined") {
-    factory(module);
+    factory(module, require("./Observer"));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod);
+    factory(mod, global.Observer);
     global.DumDum = mod.exports;
   }
-})(this, function (module) {
-  'use strict';
+})(this, function (module, _Observer) {
+  "use strict";
+
+  var _Observer2 = _interopRequireDefault(_Observer);
+
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -61,29 +69,35 @@
 
 
     _createClass(DumDum, [{
-      key: 'getExecutedRoutes',
+      key: "getExecutedRoutes",
       value: function getExecutedRoutes() {
         return this.executedRoutes;
       }
     }, {
-      key: 'createObserver',
+      key: "createObserver",
       value: function createObserver() {
         var _this = this;
 
-        // create the instance
-        this.observer = new MutationObserver(function (mutations) {
-          mutations.forEach(function (mutation) {
+        if ("MutationObserver" in window) {
+          // create the instance
+          this.observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+              return _this.observeChange(mutation);
+            });
+          });
+
+          // observe the element for attribute changes
+          this.observer.observe(this.body, {
+            attributes: true
+          });
+        } else {
+          this.observer = new _Observer2.default(this.body, function (mutation) {
             return _this.observeChange(mutation);
           });
-        });
-
-        // observe the element for attribute changes
-        this.observer.observe(this.body, {
-          attributes: true
-        });
+        }
       }
     }, {
-      key: 'observeChange',
+      key: "observeChange",
       value: function observeChange(mutation) {
         if (mutation.attributeName === "class") {
           // we are only interested in changes to the class attribute
@@ -91,7 +105,7 @@
         }
       }
     }, {
-      key: 'checkClasses',
+      key: "checkClasses",
       value: function checkClasses() {
         var classes = this.createClassArray(); // a list of all classes
         if (classes.length > 0 && classes[0]) {
@@ -122,19 +136,19 @@
         }
       }
     }, {
-      key: 'createClassArray',
+      key: "createClassArray",
       value: function createClassArray() {
         var classes = this.body.classList.value.replace(/-/g, '_').split(/\s+/); // remove dashes and replace them with underscores so they can be object names
         classes.unshift('common'); // the common class is always in the queue
         return classes;
       }
     }, {
-      key: 'isRouteExecuted',
+      key: "isRouteExecuted",
       value: function isRouteExecuted(className) {
         return this.executedRoutes.indexOf(className) > -1;
       }
     }, {
-      key: 'maybeExecuteClassRoute',
+      key: "maybeExecuteClassRoute",
       value: function maybeExecuteClassRoute(className) {
         if (this.routes[className] && !this.isRouteExecuted(className)) {
           this.executeRoute(className);
@@ -143,7 +157,7 @@
         return false; // return false if nothing was valid
       }
     }, {
-      key: 'executeRoute',
+      key: "executeRoute",
       value: function executeRoute(className) {
         try {
           // try to execute the route
