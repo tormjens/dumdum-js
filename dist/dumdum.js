@@ -85,7 +85,6 @@
     }, {
       key: 'observeChange',
       value: function observeChange(mutation) {
-        console.log(mutation);
         if (mutation.attributeName === "class") {
           // we are only interested in changes to the class attribute
           this.checkClasses();
