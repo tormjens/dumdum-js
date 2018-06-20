@@ -25,6 +25,7 @@ describe('DumDum', () => {
 
   it('triggers when the class list changes', (done) => {
     document.body.classList += ' world'
+
     setTimeout(() => {
       expect(document.body.textContent).toContain('World')
       done()
@@ -48,6 +49,7 @@ describe('DumDum', () => {
     let eventFired = false
 
     document.body.classList += ' world'
+    
     setTimeout(() => {
       expect(eventFired).toBe(true);
       done();
