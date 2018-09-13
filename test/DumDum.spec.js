@@ -1,12 +1,14 @@
 import DumDum from '../lib/DumDum.js'
 import expect from 'expect';
 import jsDom from 'mocha-jsdom';
+import sinon from 'sinon'
 
 describe('DumDum', () => {
 
   jsDom()
 
-  beforeEach(() => {
+  beforeEach(function () {
+    this.clock = sinon.useFakeTimers(Date.now())
     document.body.classList = 'hello'
 
     new DumDum({
@@ -19,47 +21,19 @@ describe('DumDum', () => {
     });
   })
 
+  afterEach(function () {
+    this.clock = sinon.restore();
+  })
+
   it('triggers on the first page load', () => {
     expect(document.body.textContent).toContain('Hello')
   })
 
-  it('triggers when the class list changes', (done) => {
+  it('triggers when the class list changes', function () {
     document.body.classList += ' world'
+    this.clock.tick(101);
 
-    setTimeout(() => {
-      expect(document.body.textContent).toContain('World')
-      done()
-    }, 100);
-  })
-
-  it('fires an event when checking for routes', (done) => {
-    let eventFired = false
-
-    setTimeout(() => {
-      expect(eventFired).toBe(true);
-      done();
-    }, 400)
-
-    document.body.addEventListener('dumdum:route:before', e => {
-      eventFired = true
-    })
-  })
-
-  it('fires an event when a route is triggered by the class list changing', (done) => {
-    let eventFired = false
-
-    document.body.classList += ' world'
-    
-    setTimeout(() => {
-      expect(eventFired).toBe(true);
-      done();
-    }, 300)
-
-    document.body.addEventListener('dumdum:route:after', e => {
-      if (e.detail.route === 'world') {
-        eventFired = true
-      }
-    })
+    expect(document.body.textContent).toContain('World')
   })
 
 });
