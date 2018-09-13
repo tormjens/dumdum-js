@@ -1,6 +1,6 @@
 {
   "name": "dumdum-js",
-  "version": "0.3",
+  "version": "0.3.0",
   "description": "",
   "main": "lib/DumDum.js",
   "files": [
