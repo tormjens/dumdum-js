@@ -1,17 +1,21 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(["module", "./Observer"], factory);
+    define(["exports", "./Observer"], factory);
   } else if (typeof exports !== "undefined") {
-    factory(module, require("./Observer"));
+    factory(exports, require("./Observer"));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod, global.Observer);
+    factory(mod.exports, global.Observer);
     global.DumDum = mod.exports;
   }
-})(this, function (module, _Observer) {
+})(this, function (exports, _Observer) {
   "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
   var _Observer2 = _interopRequireDefault(_Observer);
 
@@ -150,11 +154,24 @@
     }, {
       key: "maybeExecuteClassRoute",
       value: function maybeExecuteClassRoute(className) {
+        this.fireEvent('route:before', {
+          route: className
+        });
         if (this.routes[className] && !this.isRouteExecuted(className)) {
           this.executeRoute(className);
+          this.fireEvent('route:after', {
+            route: className
+          });
           return true; // return true when we found a route and executed it
         }
         return false; // return false if nothing was valid
+      }
+    }, {
+      key: "fireEvent",
+      value: function fireEvent(event, payload) {
+        this.body.dispatchEvent(new CustomEvent('dumdum:' + event, {
+          detail: payload
+        }));
       }
     }, {
       key: "executeRoute",
@@ -172,5 +189,5 @@
     return DumDum;
   }();
 
-  module.exports = DumDum;
+  exports.default = DumDum;
 });
