@@ -1,8 +1,12 @@
 language: node_js
-
 cache:
   directories:
-    - "node_modules"
-
+  - node_modules
 node_js:
-  - "7"
+- '7'
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: tormorten@tormorten.no
+  api_key:
+    secure: iI4lNb4by/gWIkNJPuQIfxdiwuK68vta281TalxvSSjVfShFKkMzzlH9Jy1+si/uKv2MEckPpLm1dMH/W4JXqeE0bEpribLaoelH8yZe2BB0XH1wdESO1CWu+7RICzWhMbEcRKQa/uFr8oUKsDP6N7VHg3hvLz6WOHgroItxN9p7aSjg4BT+Fj56MNHFMqcj8QA7uj2lWPFzrU97b1fVAjLAZhZXe/+T4eiEHnBnl0bfoF6Qo3PnmZyKHd2TdhEGgKQSJD5+SNJJvJcIhITkVgX128StWuuGPt/gjAvs0sXyajYMnoDZoWl56ZizgWe5KBDyH9vRS1jPC+pbAyEdidsM1xqFLyEnlV9trP871sCHGP11te4ltoIyzVBjq3qP3XqTqWmS3SO+JMx4UscyjzVToZ8kftxeVvdusAJ7xg3blUelkGhkxA6lxuEk+f3oXUDDtJip8p8+Nta2eoHSJFXrGYLGeQnnsS2IqL9GClml9HgsNtJeRgvwF6N7O26DHe8HgN4X8Me6ytdILPmS0KN5F8lhPdu/P6oiI+ZHb43aeXXDmVxv0okhKC8Egmy/2/7TPMAYjfyXobiQIhmZUvkmglylwsGO7GbusjVFG08byakHMt7fJrzdxYZtck1abImT7pAbQ6eTOE+duzPu7TuY3cnwJ2stZXwGvH8Z0tg=

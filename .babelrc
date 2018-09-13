@@ -6,3 +6,4 @@
     "transform-es2015-modules-umd"
   ]
 }
+travis encrypt a6e4359f-600d-4139-b325-40d936462525 --add deploy.api_key
