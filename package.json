@@ -36,7 +36,7 @@
     "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "expect": "^21.2.1",
     "babel-preset-env": "^1.7.0",
-    "jsdom": "^11.3.0",
+    "jsdom": "^16.5.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^4.0.1",
     "mocha-jsdom": "^1.1.0",
