@@ -38,7 +38,7 @@
     "babel-preset-env": "^1.7.0",
     "jsdom": "^11.3.0",
     "jsdom-global": "^3.0.2",
-    "mocha": "^4.0.1",
+    "mocha": "^10.2.0",
     "mocha-jsdom": "^1.1.0",
     "mocha-webpack": "^0.7.0",
     "mutationobserver-shim": "^0.3.2",
